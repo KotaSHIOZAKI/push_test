@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <form method="post">
+      <label for="msg" class="col-sm-4 col-form-label">
+        <!-- ラベル -->
+        <strong>メッセージ</strong>
+      </label>
+      <input type="text" name="msg" id="msg">
+      <br>
+      <input type="submit" value="送信">
+    </form>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js"></script>
+  <script>
+    function push(){
+      Push.create("更新情報", 
+      {
+        body: "ブログの更新をお知らせします!",
+        timeout: 8000,
+        onClick: function () {
+          window.focus(); 
+          this.close();
+        }
+      })
+    }
+  </script>
+</html>
